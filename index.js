@@ -32,6 +32,11 @@ const io = require('socket.io')(httpServer);
 
 io.on('connection', (socket) => {
   console.log('A user connected');
+
+  socket.on('message', (message) => {
+    console.log(message);
+    socket.broadcast.emit('message', message);
+  });
 });
 
 // Listen for calls on the designated port
