@@ -6,10 +6,11 @@
 
 body {
     font: 13px Helvetica, Arial;
+    overflow-x: hidden;
 }
 
 form {
-    background: #000;
+    background: rgba(255, 0, 255, 0.27);
     padding: 3px;
     position: fixed;
     bottom: 0;
@@ -25,9 +26,10 @@ form input {
 
 form button {
     width: 9%;
-    background: rgb(130, 224, 255);
+    background: transparent;
     border: none;
     padding: 10px;
+    cursor: pointer;
 }
 
 #messages {
@@ -38,8 +40,24 @@ form button {
 
 #messages li {
     padding: 5px 10px;
+    min-height: 25px;
+    position: relative;
+}
+
+#messages li:last-child {
+    animation: animate-message 750ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 1;
 }
 
 #messages li:nth-child(odd) {
-    background: #eee;
+    background: rgb(110, 46, 105);
+    color: white;
+}
+
+@keyframes animate-message {
+    from {
+        right: -9999px;
+    }
+    to {
+        right: 0;
+    }
 }
